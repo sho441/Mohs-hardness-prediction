@@ -19,7 +19,7 @@ Kaggle Playground（Regression with a Mohs Hardness Dataset）を用いたモー
 
 * **ハイパーパラメータ最適化**: Optuna
 
-* **検証手法**: ネステッド交差検証 (Nested Cross-Validation, 5-Fold), ターゲットエンコーディング
+* **検証手法**: 交差検証 (Cross-Validation, 5-Fold)
 
 ## 4.ディレクトリ構成
 本リポジトリでは、保守性と可読性を高めるため、処理を機能ごとにモジュール分割（`src/`）およびEDA用のノートブック（`notebooks/`）として整理しています。
@@ -30,13 +30,21 @@ Mohs-hardness-prediction/
 
 ├── requirements.txt
 
-├── data/                  # ⚠️ データファイル（容量制限のためGit管理外）
+├── data/
 
-│   ├── train.csv          # ※下記リンクから配置してください
+│   ├── train.csv
+
+│   └── test.csv
+
+│   └── test.csv
 
 │   └── test.csv
 
 ├── src/
+
+│   ├── __init__.py
+
+│   ├── config.py          # パス・ハイパーパラメータ・定数管理
 
 │   ├── features.py        # 特徴量エンジニアリング・前処理関数
 
@@ -58,10 +66,6 @@ Mohs-hardness-prediction/
 ### ② ドメイン知識に基づく高度な特徴量エンジニアリング
 
 ・鉱物の化学組成比率や物性値間の相互作用に着目し、非線形な関係性を捉えるための派生特徴量や統計量を多角的に生成。
-
-・カテゴリカル変数に対するターゲットエンコーディング（TE）や、N-gram（Bi-gram/Tri-gram）による組み合わせ特徴量の生成。
-
-・離脱者・継続者の分布に基づいた条件付きパーセンタイルランクや四分位数からの距離差分特徴量の作成。
 
 ### ③ 複数モデルの比較と重み付きアンサンブル
 
