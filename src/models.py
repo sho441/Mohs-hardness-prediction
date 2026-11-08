@@ -2,9 +2,7 @@ from typing import Dict, List
 import lightgbm as lgb
 from catboost import CatBoostRegressor
 import xgboost as xgb
-from sklearn.ensemble import (
-    RandomForestRegressor,
-)
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import Ridge
 from src.config import (
     CATBOOST_DEFAULT_PARAMS,
